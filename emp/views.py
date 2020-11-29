@@ -19,7 +19,8 @@ class HomeView(TemplateView):
 def list_(request):
     emp_list = Employees.objects.all().order_by('-employee_id')[:5]
     context = {'emp_list': emp_list}
-    return render(request, 'emp/list.html', context)
+    # return render(request, 'emp/list.html', context)
+    return JsonResponse(list(emp_list.values()), safe=False)
 
 
 def details(request, employee_id):
