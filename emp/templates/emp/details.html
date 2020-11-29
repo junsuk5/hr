@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<h1>사원정보</h1>
+{% if emp.errors %}
+    {{ emp.errors }}
+{% endif %}
+
+<form action="/emp/update/" method="post">
+    {% csrf_token %}
+    <table>
+        {{ emp.as_table }}
+    </table>
+{#사원번호 : {{ emp.employee_id }}<br>#}
+{#이름 : {{ emp.first_name }} {{ emp.last_name }}<br>#}
+{#이메일 : {{ emp.email }}<br>#}
+    <input type="submit" value="저장">
+    <a href="/emp/{{ emp.employee_id.value }}/delete">삭제</a>
+    <a href="/emp/list/">목록</a>
+</form>
+</body>
+</html>
