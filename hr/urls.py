@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.urls import path
 
 # URL Conf
+from emp import views
+
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
